@@ -20,5 +20,10 @@ router.route('/').post((req, res) => {
   res.status(201).json(user);
 });
 
+router.route('/:id').put(async (req, res) => {
+  const user = await usersService.updateUser(req.params.id, req.body);
+  // map user fields to exclude secret fields like "password"
+  res.json(user);
+});
 
 module.exports = router;

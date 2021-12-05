@@ -32,6 +32,14 @@ const createUser = (data) => {
 };
 // TODO: mock implementation. should be replaced during task development
 // 
-;
 
-module.exports = { getAll, getUser, createUser };
+const updateUser = (id, data) => {
+  const user = findUser(id);
+  user.name = data.name;
+  user.login = data.login;
+  user.password = data.password;
+
+  return user;
+};
+
+module.exports = { getAll, getUser, createUser, updateUser };
