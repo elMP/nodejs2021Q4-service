@@ -3,11 +3,26 @@ const UserModel = require('./user.model');
 
 const users = [];
 
+const findUser = (id) => {
+  for (let i = 0; i < users.length; i += 1) {
+    if (users[i].id === id)
+      return users[i];
+  }
+  return false;
+}
+
 const getAll = async () => {
   console.log("users1");
 
   return users;
 };
+
+const getUser = async (id) => {
+  const user = findUser(id);
+
+  return user;
+};
+
 
 const createUser = (data) => {
   console.log(data);
@@ -25,4 +40,6 @@ const createUser = (data) => {
 // 
 ;
 
-module.exports = { getAll, createUser };
+
+
+module.exports = { getAll, getUser, createUser };

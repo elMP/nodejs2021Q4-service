@@ -8,7 +8,12 @@ router.route('/').get(async (req, res) => {
   res.json(users.map(User.toResponse));
 });
 
-
+router.route('/:id').get(async (req, res) => {
+  console.log(req.params.id)
+  const user = await usersService.getUser(req.params.id);
+  // map user fields to exclude secret fields like "password"
+  res.json(user);
+});
 
 router.route('/').post((req, res) => {
   console.log(req.body)
