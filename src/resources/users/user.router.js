@@ -26,4 +26,10 @@ router.route('/:id').put(async (req, res) => {
   res.json(user);
 });
 
+router.route('/:id').delete(async (req, res) => {
+  await usersService.deleteUser(req.params.id);
+  // map user fields to exclude secret fields like "password"
+  res.status(204).end();
+});
+
 module.exports = router;

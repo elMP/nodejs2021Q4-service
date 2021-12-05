@@ -11,6 +11,15 @@ const findUser = (id) => {
   return false;
 }
 
+const deleteUserById = (id) => {
+  let index = -1;
+  for (let i = 0; i < users.length; i += 1) {
+    if (users[i].id === id)
+      index = i;
+  }
+  users.splice(index, 1);
+}
+
 const getAll = async () => users;
 
 const getUser = async (id) => {
@@ -42,4 +51,10 @@ const updateUser = (id, data) => {
   return user;
 };
 
-module.exports = { getAll, getUser, createUser, updateUser };
+const deleteUser = (id) => {
+  deleteUserById(id);
+
+  
+};
+
+module.exports = { getAll, getUser, createUser, updateUser, deleteUser };
