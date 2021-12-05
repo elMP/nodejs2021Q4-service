@@ -11,11 +11,7 @@ const findUser = (id) => {
   return false;
 }
 
-const getAll = async () => {
-  console.log("users1");
-
-  return users;
-};
+const getAll = async () => users;
 
 const getUser = async (id) => {
   const user = findUser(id);
@@ -25,7 +21,6 @@ const getUser = async (id) => {
 
 
 const createUser = (data) => {
-  console.log(data);
   const user = new UserModel();
   user.name = data.name;
   user.login = data.login;
@@ -33,13 +28,10 @@ const createUser = (data) => {
   user.id = crypto.randomUUID();
 
   users.push(user);
-  console.log(users);
   return { "id": user.id, "name": user.name, "login": user.login };
 };
 // TODO: mock implementation. should be replaced during task development
 // 
 ;
-
-
 
 module.exports = { getAll, getUser, createUser };
